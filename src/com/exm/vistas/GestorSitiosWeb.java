@@ -43,6 +43,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         modelTableSitiosWeb = new ModelTableSitiosWeb(controladorsitiosweb.ObtenerSitiosWeb(), this);
         modelTablePapelera = new ModelTablePapelera(controladorpapelera.ObtenerPapelera(), this);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -76,6 +77,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         jLabel4 = new javax.swing.JLabel();
         txtNavegador = new javax.swing.JTextField();
         btnNavegar = new javax.swing.JButton();
+        txtSeguridad = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         cmbBusquedaPapelera = new javax.swing.JComboBox<>();
@@ -90,6 +92,8 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         btnRecuperarPapelera = new javax.swing.JButton();
         btnEliminarPapelera = new javax.swing.JButton();
         btnLimpiarPapelera = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        btnVaciarPapelera = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMenuEditar = new javax.swing.JMenu();
@@ -207,7 +211,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         });
 
         jTable1.setModel(modelTableSitiosWeb);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -255,9 +259,11 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
 
         jLabel4.setText("URL:");
 
+        txtNavegador.setEditable(false);
         txtNavegador.setToolTipText("direcci[on web");
+        txtNavegador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btnNavegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exm/resource/img/navegar.png"))); // NOI18N
+        btnNavegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exm/resource/img/Navegar.png"))); // NOI18N
         btnNavegar.setText("Ir");
         btnNavegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNavegar.addActionListener(new java.awt.event.ActionListener() {
@@ -265,6 +271,8 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
                 btnNavegarActionPerformed(evt);
             }
         });
+
+        txtSeguridad.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -279,7 +287,9 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(txtNavegador)
+                        .addComponent(txtNavegador, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSeguridad)
                         .addGap(18, 18, 18)
                         .addComponent(btnNavegar)))
                 .addContainerGap())
@@ -294,14 +304,15 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNavegar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtNavegador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                            .addComponent(txtNavegador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnNavegar))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Sitios Web", jPanel1);
@@ -323,7 +334,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         });
 
         jTable2.setModel(modelTablePapelera);
-        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(jTable2);
 
         jLabel5.setText("Nombre:");
@@ -417,21 +428,41 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
                 .addGap(131, 131, 131))
         );
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Papelera");
+
+        btnVaciarPapelera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/exm/resource/img/Vaciar.png"))); // NOI18N
+        btnVaciarPapelera.setText("Vaciar Papelera");
+        btnVaciarPapelera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVaciarPapeleraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVaciarPapelera)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 427, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnVaciarPapelera)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Papelera", jPanel2);
@@ -443,6 +474,11 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         jMenuBar1.add(jMenuEditar);
 
         jMenuAcercade.setText("Acerca de");
+        jMenuAcercade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuAcercadeMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenuAcercade);
 
         setJMenuBar(jMenuBar1);
@@ -467,6 +503,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
     }//GEN-LAST:event_SubmenuSalirActionPerformed
 
     private void btnGuardarSitiosWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarSitiosWebActionPerformed
+        try{
         if (controladorsitiosweb.GuardarSitioWeb(guardarsitiosweb())) {
             JOptionPane.showMessageDialog(rootPane, "Pagina guardada con exito en el sistema");
             LimpiarSitiosWeb();
@@ -474,6 +511,9 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
             modelTableSitiosWeb.fireTableDataChanged();
         } else {
             JOptionPane.showMessageDialog(rootPane, "No se pudo guardar el navegador", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        }catch(Exception e){
+            System.out.println("El dato ingresado no es una url");
         }
     }//GEN-LAST:event_btnGuardarSitiosWebActionPerformed
 
@@ -497,11 +537,12 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         sw.setNombre(txtNombreSitiosWeb.getText());
         sw.setUrl(txtURLSitiosWeb.getText());
         sw.setFecha_registro(new Date());
-        sw.setSeguridad(utilidades.urlSeguridad(txtURLSitiosWeb.getText()));
+        sw.setSeguridad(utilidades.seguridadurl(txtURLSitiosWeb.getText()));
         sw.setFecha_actualizacion(new Date());
         return sw;
     }
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        try{
         if (sitioswebeditareliminar == null) {
             JOptionPane.showMessageDialog(rootPane, "No hay un sitio web para editar", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
@@ -509,6 +550,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         if (sitioswebeditareliminar != null) {
             sitioswebeditareliminar.setNombre(txtNombreSitiosWeb.getText());
             sitioswebeditareliminar.setUrl(txtURLSitiosWeb.getText());
+            sitioswebeditareliminar.setSeguridad(utilidades.seguridadurl(txtURLSitiosWeb.getText()));
             sitioswebeditareliminar.setFecha_actualizacion(new Date());
             if (controladorsitiosweb.EditarSitioWeb(sitioswebeditareliminar)) {
                 JOptionPane.showMessageDialog(rootPane, "Sitio web actualizado");
@@ -519,6 +561,9 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
             } else {
                 JOptionPane.showMessageDialog(rootPane, "No se puede actualizar el sitio web", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+        }
+        }catch(Exception e){
+            System.out.println("El dato ingresado no es una url");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -583,6 +628,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         txtURLSitiosWeb.setText("");
         txtNavegador.setText("");
         txtBuscarSitiosWeb.setText("");
+        txtSeguridad.setText("");
     }
 
     private void btnBuscarPapeleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPapeleraActionPerformed
@@ -630,6 +676,8 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         return pa;
     }
     private void btnEliminarPapeleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPapeleraActionPerformed
+        if (JOptionPane.showConfirmDialog(rootPane, "Se Eliminara permanentemente el sitio, Desea continuar?", "Vaciar Sitio Web",
+                    JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
         if (papeleraeditareliminar != null) {
             if (controladorpapelera.EliminarPapelera(papeleraeditareliminar)) {
                 JOptionPane.showMessageDialog(rootPane, "Sitio eliminado del sistema");
@@ -643,6 +691,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         } else {
             JOptionPane.showMessageDialog(rootPane, "No hay sitio web seleccionado para eliminar", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        }
     }//GEN-LAST:event_btnEliminarPapeleraActionPerformed
 
     private void btnLimpiarPapeleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarPapeleraActionPerformed
@@ -652,6 +701,20 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
     private void txtNombreSitiosWebFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreSitiosWebFocusGained
         LimpiarSitiosWeb();
     }//GEN-LAST:event_txtNombreSitiosWebFocusGained
+
+    private void btnVaciarPapeleraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVaciarPapeleraActionPerformed
+       if (JOptionPane.showConfirmDialog(rootPane, "Se Vaciara la papelera, Desea continuar?", "Vaciar Papelera",
+                    JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                controladorpapelera.VaviarPapelera();
+                modelTablePapelera.setPapelera(controladorpapelera.ObtenerPapelera());
+                modelTablePapelera.fireTableDataChanged();
+       }
+    }//GEN-LAST:event_btnVaciarPapeleraActionPerformed
+
+    private void jMenuAcercadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuAcercadeMouseClicked
+        AcercaDe pantallaAcercade = new AcercaDe(this, true);
+        pantallaAcercade.setVisible(true);
+    }//GEN-LAST:event_jMenuAcercadeMouseClicked
 
     public void LimpiarPapelera() {
         txtNombrePapelera.setText("");
@@ -706,6 +769,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
     private javax.swing.JButton btnLimpiarSitiosWeb;
     private javax.swing.JButton btnNavegar;
     private javax.swing.JButton btnRecuperarPapelera;
+    private javax.swing.JButton btnVaciarPapelera;
     private javax.swing.JComboBox<String> cmbBusquedaPapelera;
     private javax.swing.JComboBox<String> cmbBusquedaSitiosWeb;
     private javax.swing.JLabel jLabel1;
@@ -714,6 +778,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenuAcercade;
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenuBar jMenuBar1;
@@ -733,6 +798,7 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
     private javax.swing.JTextField txtNavegador;
     private javax.swing.JTextField txtNombrePapelera;
     private javax.swing.JTextField txtNombreSitiosWeb;
+    private javax.swing.JTextField txtSeguridad;
     private javax.swing.JTextField txtURLPapelera;
     private javax.swing.JTextField txtURLSitiosWeb;
     // End of variables declaration//GEN-END:variables
@@ -743,6 +809,11 @@ public class GestorSitiosWeb extends javax.swing.JFrame implements ComunicacionV
         txtNombreSitiosWeb.setText(sitioswebeditareliminar.getNombre());
         txtURLSitiosWeb.setText(sitioswebeditareliminar.getUrl());
         txtNavegador.setText(sitioswebeditareliminar.getUrl());
+        if(sitioswebeditareliminar.getSeguridad()==1){
+            txtSeguridad.setText("Es Seguro");
+        }else{
+            txtSeguridad.setText("No es Seguro");
+        }
     }
 
     @Override

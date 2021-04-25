@@ -63,6 +63,26 @@ public class Papelerabd {
         }
         return false;
     }
+    
+    public boolean VaviarPapelera() {
+        boolean eliminar = false;
+        Statement stm = null;
+        Connection con = null;
+        String sql = "truncate table gestorweb.papelera;";
+        try {
+            Conexion conexion = new Conexion();
+            con = conexion.ConexionMysql();
+            stm = con.createStatement();
+            stm.executeUpdate(sql);
+            eliminar = true;
+            stm.close();
+            return eliminar;
+        } catch (Exception e) {
+            System.out.println("hubo algun error" + e.getMessage());
+
+        }
+        return false;
+    }
 
     public List<Papelera> ObtenerPapelera() {
         Connection co = null;

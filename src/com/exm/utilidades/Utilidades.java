@@ -26,20 +26,6 @@ public class Utilidades {
         return f.format(fecha);
     }
 
-    public int urlSeguridad(String url) {
-        /*validación de url*/
-        try {
-            new URL(url).toURI();
-            System.out.println("URL Seguro");
-            return 1;
-        } catch (URISyntaxException exception) {
-            System.out.println("URL No es Seguro");
-            return 2;
-        } catch (MalformedURLException exception) {
-            System.out.println("No es un url");
-            return 0;
-        }
-    }
 
     public boolean urlValidator(String url) {
     try {
@@ -60,12 +46,25 @@ public class Utilidades {
             e.getMessage();
         }
     }
+    
+    public int seguridadurl(String url){
+        String dato = url.substring(0, 5);
+        System.out.println(dato);
+        if(dato.equals("https")){
+            System.out.println("Es seguro");
+            return 1;
+        }else{
+            System.out.println("no es seguro");
+            return 2;
+        }
+    }
 
 
     public static void main(String[] args){
-        String url = "https://www.google.com/search?q=verificar+si+un+link+existe+en+java&oq=verificar&aqs=chrome.0.69i59j69i57j69i59j0i433j0l3j69i61.6315j1j7&sourceid=chrome&ie=UTF-8";
+        String url = "http://www.manualweb.net/java/funciones-basicas-con-cadenas/";
         Utilidades ut = new Utilidades();
-        ut.urlValidator(url);
+//        ut.urlValidator(url);
+        ut.seguridadurl(url);
     }
 
 }
